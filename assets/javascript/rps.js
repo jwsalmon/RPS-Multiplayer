@@ -18,6 +18,20 @@ var bPlayer2 = false
 var playerName = "";
 
 //write code to get name of players and add them to chat:
+function addToChat(){
+    var chat = $("#chatScreen");
+   chat.val('');
+   for (let i = 0; i < comments.length; i++) {
+       var element = comments[i];
+
+       chat.val(chat.val() + element.trim() + "\n");
+   }
+   var messageListRef = database.ref();
+    
+    messageListRef.set({
+        comments: comments
+    });
+}
 $("#setPlayer1").on("click", function () {
     bPlayer1 = true;
     $("#setPlayer1").prop("disable",true);
@@ -34,16 +48,19 @@ $("#setPlayer2").on("click", function () {
 $("#addToChat").on("click", function () {
     var comment = playerName + ": " + $("#chatText \n").val();
    comments.push(comment)
-   var chat = $("#chatScreen");
-   chat.val('');
-   for (let i = 0; i < comments.length; i++) {
-       var element = comments[i];
+   addToChat();
 
-       chat.val(chat.val() + element.trim() + "\n");
-   }
+});
+database.ref().on("value", function (snapshot) {
+    
+    if (snapshot.child("comments").exists() ){
+
+    dbVal = snapshot.val();
+    comments = dbVal.comments;
+    addToChat();
+    }
    
 });
-
 
     //write code to sent player selection to db
 

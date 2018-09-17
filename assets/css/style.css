@@ -7,11 +7,11 @@ body{
 .rock{
     background-image: url(../images/rockHand.png);
     background-repeat: no-repeat;
-    background-size: 120px;
+    background-size: 115px;
     background-position: bottom;
     background-color: white;
     width: 123px;
-    height: 125px;
+    height: 123px;
     text-align: center;
     padding: 0px 0px 100px 0px;
 }

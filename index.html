@@ -24,29 +24,43 @@
         <div class="row">
             <div class="col-md-6">
                 <h1>Player1</h1>
+                <div class="input-group mb-3">
+                    <input type="text" id="player1Name" class="form-control" placeholder="Enter Player 1" aria-label="Palyer 1 Name"
+                        aria-describedby="setPlayer1">
+                    <div class="input-group-append">
+                        <button class="btn btn-btn-player-set" type="button" id="setPlayer1">set</button>
+                    </div>
+                </div>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                     <label class="btn btn-secondary active rock">
-                        <input type="radio" name="options" id="p1Option1" autocomplete="off" checked> rock
+                        <input type="radio" name="p1rps" id="p1Option1" value="rock" autocomplete="off" checked> rock
                     </label>
                     <label class="btn btn-secondary paper">
-                        <input type="radio" name="options" id="p1Option2" autocomplete="off"> paper
+                        <input type="radio" name="p1rps" id="p1Option2" value="paper" autocomplete="off"> paper
                     </label>
                     <label class="btn btn-secondary scissor">
-                        <input type="radio" name="options" id="p1Option3" autocomplete="off"> scissor
+                        <input type="radio" name="p1rps" id="p1Option3" value="scissor" autocomplete="off"> scissor
                     </label>
                 </div>
             </div>
             <div class="col-md-6">
                 <h1>Player2</h1>
+                <div class="input-group mb-3">
+                    <input type="text" id="player1Name" class="form-control" placeholder="Enter Player 2" aria-label="Palyer 2 Name"
+                        aria-describedby="setPlayer2">
+                    <div class="input-group-append">
+                        <button class="btn btn-player-set" type="button" id="setPlayer2">set</button>
+                    </div>
+                </div>
                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary active rock">rock
-                        <input type="radio" name="options" id="p2Option1" autocomplete="off" checked> rock
+                    <label class="btn btn-secondary active rock">
+                        <input type="radio" name="p2rps" id="p2Option1" value="rock" autocomplete="off" checked> rock
                     </label>
                     <label class="btn btn-secondary paper">
-                        <input type="radio" name="options" id="p2Option2" autocomplete="off"> paper
+                        <input type="radio" name="p2rps" id="p2Option2" value="paper" autocomplete="off"> paper
                     </label>
                     <label class="btn btn-secondary scissor">
-                        <input type="radio" name="options" id="p2Option3" autocomplete="off"> scissor
+                        <input type="radio" name="p2rps" id="p2Option3" value="scissor" autocomplete="off"> scissor
                     </label>
                 </div>
             </div>
@@ -57,10 +71,10 @@
                     <textarea id="chatScreen" readonly class="form-control" aria-label="With textarea"></textarea>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="text"  class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
-                        aria-describedby="button-addon2">
+                    <input type="text" id="chatText" class="form-control" placeholder="Type Chat Comment" aria-label="Chat Comment"
+                        aria-describedby="addToChat">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Chat</button>
+                        <button class="btn btn-chat" type="button" id="addToChat">Chat</button>
                     </div>
                 </div>
             </div>

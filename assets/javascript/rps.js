@@ -35,46 +35,27 @@ function addToChat() {
     });
 }
 
-function checkPlayAgain() {
-    var comment = "Admin: Play Again?";
-    comments.push(comment)
-    addToChat();
+function playAgain() {
     if (bPlayer1) {
-        var response = $("#chatText").val();
-        if ( response.toLowerCase() === "yes") {
-            $("#p1Option3").attr("background-image", "url(../images/scissorHand.png)");
-            $("#p1Option1").attr("background-image", "url(../images/rockHand.png)");
-            $("#p1Option2").attr("background-image", "url(../images/paperHand.png)");
-            playerOneChoice = "";
-            $("#p1Option1").prop("checked", false);
-            $("#p1Option2").prop("checked", false);
-            $("#p1Option3").prop("checked", false);
-            var messageListRef = database.ref()
-            messageListRef.child(playerOneChoice).remove();
-        }
-        else {
-            comment = "Admin: Thanks For Playing: " + player1Name;
-            comments.push(comment)
-            addToChat();
-        }
+        $("#p1Option3").attr("background-image", "url(../images/scissorHand.png)");
+        $("#p1Option1").attr("background-image", "url(../images/rockHand.png)");
+        $("#p1Option2").attr("background-image", "url(../images/paperHand.png)");
+        playerOneChoice = "";
+        $("#p1Option1").prop("checked", false);
+        $("#p1Option2").prop("checked", false);
+        $("#p1Option3").prop("checked", false);
+        var messageListRef = database.ref()
+        messageListRef.child(playerOneChoice).remove();
     }
     if (bPlayer2) {
-        var response = $("#chatText").val();
-        if (response.toLowerCase() === "yes") {
-            $("#p2Option3").attr("background-image", "url(../images/scissorHand.png)");
-            $("#p2Option1").attr("background-image", "url(../images/rockHand.png)");
-            $("#p2Option2").attr("background-image", "url(../images/paperHand.png)");
-            playeTwoChoice = "";
-            $("#p2Option1").prop("checked", false);
-            $("#p2Option2").prop("checked", false);
-            $("#p2Option2").prop("checked", false);
-            messageListRef.child(playerTwoChoice).remove();
-        }
-        else {
-            comment = "Admin: Thanks For Playing: " + player2Name;
-            comments.push(comment)
-            addToChat();
-        }
+        $("#p2Option3").attr("background-image", "url(../images/scissorHand.png)");
+        $("#p2Option1").attr("background-image", "url(../images/rockHand.png)");
+        $("#p2Option2").attr("background-image", "url(../images/paperHand.png)");
+        playeTwoChoice = "";
+        $("#p2Option1").prop("checked", false);
+        $("#p2Option2").prop("checked", false);
+        $("#p2Option2").prop("checked", false);
+        messageListRef.child(playerTwoChoice).remove();
     }
 }
 function checkWinner() {
@@ -142,7 +123,10 @@ function checkWinner() {
         $("#p1Option3").attr("background-image", "url(../images/scissorHandGreen.png)");
         $("#p2Option3").attr("background-image", "url(../images/scissorHandGreen.png)");
     }
-    checkPlayAgain();
+    var comment = "Admin: Play Again? click on restart button";
+    comments.push(comment)
+    addToChat();
+    $(".restart").prop("disabled",false);
 }
 $("#setPlayer1").on("click", function () {
     bPlayer1 = true;
@@ -165,6 +149,10 @@ $("#addToChat").on("click", function () {
     comments.push(comment)
     addToChat();
 
+});
+$(".restart").on("click", function () {
+    $(".restart").prop("disabled",true);
+    playAgain();
 });
 database.ref().on("value", function (snapshot) {
 
@@ -223,9 +211,4 @@ $("input[type='button']").click(function () {
     }
 })
 
-    //write code to determine winner and let players know who won
-    // use this to set correct images: $('myObject').css('background-image', 'url(' + imageUrl + ')');
-
-    // write code to take chat info put in db and display it in chat text
-
-    //add button with rules to play and pop dialog with details.
+    
